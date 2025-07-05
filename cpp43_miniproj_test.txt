@@ -1,0 +1,59 @@
+SV01
+Nguyen Hoang Long
+12/03/2001
+CNTT1
+3.5
+
+SV02
+Tran Thi Mai Linh
+22/07/2000
+KT2
+3.8
+
+SV03
+Le Van Minh
+05/09/1999
+CNTT3
+2.9
+
+SV04
+Pham Thi Bao Chau
+17/11/2001
+QTKD2
+3.4
+
+SV05
+Hoang Anh Tuan
+29/01/2002
+CNTT1
+3.1
+
+SV06
+Doan Thi Thuy Trang
+10/10/2000
+NN1
+3.6
+
+SV07
+Vu Tien Dat
+03/12/1998
+CNTT2
+2.7
+
+SV08
+Nguyen Thi Ngoc Han
+14/02/2001
+QTKD1
+3.3
+
+SV09
+Trinh Van Duy
+08/06/1999
+CNTT4
+3.0
+
+SV10
+Bui Thi Kim Ngan
+19/08/2002
+KT1
+3.9
