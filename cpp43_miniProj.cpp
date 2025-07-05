@@ -1,17 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct sinhVien{
+struct sinhVien {
 	string mssv, hoTen, ngaySinh, lop, email, password;
 	float gpa;
+
+	sinhVien(string m = "", string h = "", string ns = "", string l = "", float g = 0)
+		: mssv(m), hoTen(h), ngaySinh(ns), lop(l), email(""), password(""), gpa(g) {}
 };
+
 
 
 sinhVien nhap(unordered_map<string, int>& MSSV, map<string, sinhVien>& msv_sv);
 
 void nhapDs(vector<sinhVien> &ds, int n, unordered_map<string, int>& MSSV, map<string, sinhVien>& msv_sv); // 1, 8
 
-void print(sinhVien sv); // 2
+void print(sinhVien sv); // 2, 6
 
 void inDs(const vector<sinhVien>& ds); // 2
 
@@ -34,17 +38,17 @@ int main(){
 	map<string, sinhVien> msv_sv; // 6
 	
 	while(true){
-		cout << "---------------oOo--------------\n";
-		cout << "1. Them danh sach sinh vien\n";
-		cout << "2. In ra danh sach nha vien\n";
-		cout << "3. Chuan hoa ten tat ca sinh vien\n";
-		cout << "4. Tao email va mat khau cho sinh vien\n"; //Nguyen Van Manh => manhnv@edu.com
-		cout << "5. Sap xep sinh vien theo GPA giam dan\n";
-		cout << "6. Tim kiem sinh vien theo MSSV\n";
-		cout << "7. Tim kiem sinh vien theo ten\n";
-		cout << "8. Them 1 sv vao danh sach\n";
-		cout << "9. Thoat he thong\n";
-		cout << "---------------oOo--------------\n";
+		cout << "---------------oOo---------------------\n";
+		cout << " 1. Them danh sach sinh vien\n";
+		cout << " 2. In ra danh sach nha vien\n";
+		cout << " 3. Chuan hoa ten tat ca sinh vien\n";
+		cout << " 4. Tao email va mat khau cho sinh vien\n"; //Nguyen Van Manh => manhnv@edu.com
+		cout << " 5. Sap xep sinh vien theo GPA giam dan\n";
+		cout << " 6. Tim kiem sinh vien theo MSSV\n";
+		cout << " 7. Tim kiem sinh vien theo ten\n";
+		cout << " 8. Them 1 sv vao danh sach\n";
+		cout << " 9. Thoat he thong\n";
+		cout << "---------------oOo---------------------\n";
 		cout << "Moi nhap lua chon: ";
 		int lc;
 		cin >> lc;
@@ -140,9 +144,24 @@ void print(sinhVien sv){
 }
 
 void inDs(const vector<sinhVien>& ds){
-	for(const sinhVien& sv : ds){
-		print(sv);
+//	for(const sinhVien& sv : ds){
+//		print(sv);
+//	}
+	
+	cout << "+----------+------------------------------+------------+----------+------+----------------------+--------------+\n";
+    cout << "|    MSSV  |             Ho ten           |  Ngay sinh |    Lop   |  GPA |         Email        |   Password   |\n";
+    cout << "+----------+------------------------------+------------+----------+------+----------------------+--------------+\n";
+    
+    for (const sinhVien& sv : ds){
+    	cout << "| " << setw(8) << right << sv.mssv
+    		 << " | " << setw(28) << right << sv.hoTen
+			 << " | " << setw(10) << right << sv.ngaySinh 
+			 << " | " << setw(8) << right << sv.lop
+             << " | " << fixed << setprecision(1) << setw(4) << right << sv.gpa
+             << " | " << setw(20) << right << sv.email
+             << " | " << setw(12) << right << sv.password << " |\n";
 	}
+	cout << "+----------+------------------------------+------------+----------+------+----------------------+--------------+\n";
 }
 
 void reformatNames(vector<sinhVien>& ds){
@@ -164,6 +183,7 @@ void reformatNames(vector<sinhVien>& ds){
 		newName = newName.substr(0, (int)newName.size() - 1);
 		sv.hoTen = newName;
 	}
+	cout << "Da chuan hoa ten cho toan bo SV\n";
 }
 
 void generateEmailAndPassword(vector<sinhVien>& ds, unordered_map<string, int>& emailHeader, map<string, sinhVien>& msv_sv){
@@ -205,6 +225,7 @@ void generateEmailAndPassword(vector<sinhVien>& ds, unordered_map<string, int>& 
 			msv_sv[sv.mssv] = sv;
 		}
 	}
+	cout << "Da tao email va mat khau cho SV!\n";
 }
 
 void findAndPrint(string msv, map<string, sinhVien>& msv_sv){
@@ -227,6 +248,7 @@ void descendingSortGPA(vector<sinhVien>& ds){
 			}
 		}
 	}
+	cout << "Da sap xep danh sach theo thu tu giam dan GPA\n";
 }
 
 void timTheoTen(const vector<sinhVien>& ds){
