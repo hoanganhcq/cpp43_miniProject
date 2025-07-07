@@ -261,22 +261,10 @@ void descendingSortByAge(vector<sinhVien>& ds) {
     if (n <= 1) return;
 
     for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            int y1 = stoi(ds[j].ngaySinh.substr(6));
-            int y2 = stoi(ds[j + 1].ngaySinh.substr(6));
-            int m1 = stoi(ds[j].ngaySinh.substr(3, 2));
-            int m2 = stoi(ds[j + 1].ngaySinh.substr(3, 2));
-            int d1 = stoi(ds[j].ngaySinh.substr(0, 2));
-            int d2 = stoi(ds[j + 1].ngaySinh.substr(0, 2));
-
-            bool needSwap = false;
-            if (y1 > y2) needSwap = true;
-            else if (y1 == y2 && m1 > m2) needSwap = true;
-            else if (y1 == y2 && m1 == m2 && d1 > d2) needSwap = true;
-
-            if (needSwap) {
-                swap(ds[j], ds[j + 1]);
-            }
+        for (int j = 0; j < n - i - 1; j++) {            
+            string date1 = ds[j].ngaySinh.substr(6) + ds[j].ngaySinh.substr(3, 2) + ds[j].ngaySinh.substr(0, 2);
+            string date2 = ds[j + 1].ngaySinh.substr(6) + ds[j + 1].ngaySinh.substr(3, 2) + ds[j + 1].ngaySinh.substr(0, 2);
+            if (date1 > date2) swap(ds[j], ds[j + 1]);
         }
     }
 
