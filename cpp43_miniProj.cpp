@@ -206,11 +206,11 @@ void generateEmailAndPassword(vector<sinhVien>& ds, unordered_map<string, int>& 
 			head = curr;
 			for (char& c : head) c = tolower(c);
 			head = head + last;
-			if (emailHeader.count(head) && emailHeader[head] > 1){
-				head += to_string(emailHeader[head]);
-			}else emailHeader[head]++;
 			
-			sv.email = head + "@gmail.com";
+			emailHeader[head]++;
+			
+			if (emailHeader[head] > 1) sv.email = head + to_string(emailHeader[head]) + "@gmail.com";
+			else sv.email = head + "@gmail.com";
 		
 		
 	// password	
