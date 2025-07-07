@@ -256,22 +256,31 @@ void descendingSortGPA(vector<sinhVien>& ds){
 	cout << "Da sap xep danh sach theo thu tu giam dan GPA\n";
 }
 
-void descendingSortByAge(vector<sinhVien>& ds){
-	int n = ds.size();
-	if (n <= 1) return;
-	
-	for (int i = 0; i < n - 1; i++){
-		for (int j = 0; j < n - i - 1; j++){
-			int y1 = stoi(ds[j].ngaySinh.substr(6));
-			int y2 = stoi(ds[j + 1].ngaySinh.substr(6));
-			if (y1 > y2){
-				sinhVien tmp = ds[j];
-				ds[j] = ds[j + 1];
-				ds[j + 1] = tmp;
-			}
-		}
-	}
-	cout << "Da sap xep danh sach theo tuoi giam dan\n";
+void descendingSortByAge(vector<sinhVien>& ds) {
+    int n = ds.size();
+    if (n <= 1) return;
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            int y1 = stoi(ds[j].ngaySinh.substr(6));
+            int y2 = stoi(ds[j + 1].ngaySinh.substr(6));
+            int m1 = stoi(ds[j].ngaySinh.substr(3, 2));
+            int m2 = stoi(ds[j + 1].ngaySinh.substr(3, 2));
+            int d1 = stoi(ds[j].ngaySinh.substr(0, 2));
+            int d2 = stoi(ds[j + 1].ngaySinh.substr(0, 2));
+
+            bool needSwap = false;
+            if (y1 > y2) needSwap = true;
+            else if (y1 == y2 && m1 > m2) needSwap = true;
+            else if (y1 == y2 && m1 == m2 && d1 > d2) needSwap = true;
+
+            if (needSwap) {
+                swap(ds[j], ds[j + 1]);
+            }
+        }
+    }
+
+    cout << "Da sap xep danh sach theo tuoi giam dan\n";
 }
 
 string getName(string fullName){
