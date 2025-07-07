@@ -274,6 +274,15 @@ void descendingSortByAge(vector<sinhVien>& ds){
 	cout << "Da sap xep danh sach theo tuoi giam dan\n";
 }
 
+string getName(string fullName){
+	string curr = "";
+	stringstream ss(fullName);
+	while (ss >> curr) continue;
+	for (char& c : curr) c = tolower(c);
+	
+	return curr;	
+}
+
 void timTheoTen(const vector<sinhVien>& ds){
 	if (ds.empty()){
 		cout << "Chua co Sinh Vien nao!\n";
@@ -288,9 +297,9 @@ void timTheoTen(const vector<sinhVien>& ds){
 	
 	bool found = false;
 	for (const sinhVien& sv : ds){
-		string lowerName = sv.hoTen;
-		for (char& c : lowerName) c = tolower(c);
-		
+		//string lowerName = sv.hoTen;
+		//for (char& c : lowerName) c = tolower(c);
+		string lowerName = getName(sv.hoTen);
 		if (lowerName.find(keyword) != string::npos){
 			print(sv);
 			found = true;
