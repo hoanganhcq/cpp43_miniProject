@@ -29,6 +29,7 @@ void findAndPrint(string msv, map<string, sinhVien>& msv_sv); // 6
 
 void timTheoTen(const vector<sinhVien>& ds); // 7
 
+void descendingSortByAge(vector<sinhVien>& ds); // 9
 
 
 int main(){
@@ -47,7 +48,8 @@ int main(){
 		cout << " 6. Tim kiem sinh vien theo MSSV\n";
 		cout << " 7. Tim kiem sinh vien theo ten\n";
 		cout << " 8. Them 1 sv vao danh sach\n";
-		cout << " 9. Thoat he thong\n";
+		cout << " 9. Sap xep sinh vien theo tuoi giam dan\n";
+		cout << " 10. Thoat he thong\n";
 		cout << "---------------oOo---------------------\n";
 		cout << "Moi nhap lua chon: ";
 		int lc;
@@ -81,6 +83,9 @@ int main(){
 		}
 		else if(lc == 8){
 			nhapDs(ds, 1, MSSV, msv_sv);
+		}
+		else if (lc == 9){
+			descendingSortByAge(ds);
 		}
 		else {
 			break;//Thoat he thong
@@ -249,6 +254,24 @@ void descendingSortGPA(vector<sinhVien>& ds){
 		}
 	}
 	cout << "Da sap xep danh sach theo thu tu giam dan GPA\n";
+}
+
+void descendingSortByAge(vector<sinhVien>& ds){
+	int n = ds.size();
+	if (n <= 1) return;
+	
+	for (int i = 0; i < n - 1; i++){
+		for (int j = 0; j < n - i - 1; j++){
+			int y1 = stoi(ds[j].ngaySinh.substr(6));
+			int y2 = stoi(ds[j + 1].ngaySinh.substr(6));
+			if (y1 > y2){
+				sinhVien tmp = ds[j];
+				ds[j] = ds[j + 1];
+				ds[j + 1] = tmp;
+			}
+		}
+	}
+	cout << "Da sap xep danh sach theo tuoi giam dan\n";
 }
 
 void timTheoTen(const vector<sinhVien>& ds){
